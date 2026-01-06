@@ -15,17 +15,17 @@ SRCREV = "d018237c22beabb99ec727e73c3e04e580edcebf"
 S = "${WORKDIR}/git"
 
 # Enable proper bbclasses
-inherit pkgconfig
+inherit pkgconfig generate-build-info
 
 DEPENDS += " ncurses"
+
+TARGET_CC_ARCH += "${LDFLAGS}"
 
 do_compile() {
     oe_runmake
 }
 
 do_install() {
-#    oe_runmake install DESTDIR=${D} BINDIR=${bindir} DATADIR=${datadir} MANDIR=${mandir}
-
     oe_runmake install \
         DESTDIR=${D} \
         PREFIX=/usr \
@@ -36,6 +36,4 @@ do_install() {
         MANDIR=${mandir}
 }
 
-
-FILES_${PN} += "${bindir}/nsnake"
-
+FILES:${PN} += " ${bindir}/nsnake ${datadir}/games ${datadir}/games/* ${datadir}/icons ${datadir}/icons/*"

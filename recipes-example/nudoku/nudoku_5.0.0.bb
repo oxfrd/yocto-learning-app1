@@ -12,7 +12,7 @@ SRC_URI[sha256sum] = "ba60a99c9832b5c950a00a0a9d1e0938fddf2cef32765bca18041e770a
 
 DEPENDS = "ncurses cairo"
 
-inherit pkgconfig gettext autotools kurs
+inherit pkgconfig gettext autotools generate-build-info
 
 EXTRA_OECONF = ""
 
